@@ -1,2 +1,30 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Mis cryptos</h1>
+
+
+<%# <%= @coins %>
+<table class="table table-striped table-sm table-hover mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for x in @coins['data'] %>
+      <% for coin in @my_coins %>
+        <% if coin == x['symbol'] %>
+          <tr>
+            <td><%= x['name'] %></td>
+            <td><%= x['quote']['USD']['price'] %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_tag root_path, method: :post do %>
+  <%= text_field_tag 'sym', nil, placeholder: "Enter Crypto Symbol", size: 50 %>
+  <%= submit_tag "Lookup" %>
+<% end %>
+

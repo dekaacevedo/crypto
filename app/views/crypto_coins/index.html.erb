@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Fecha</th>
+      <th scope="col">Ranking</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Volumen 24h</th>
+      <th scope="col">% Cambio 1h</th>
+      <th scope="col">% Cambio 24h</th>
+      <th scope="col">Market cap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @crypto_coins.each do |coin| %>
+      <tr>
+        <td><%= coin.created_at.strftime('%d/%m/%Y - %H:%M' ) %></td>
+        <th scope="row"><%= coin.rank %></th>
+        <td><%= coin.name %></td>
+        <td><%= coin.price %></td>
+        <td><%= coin.volume_24h %></td>
+        <td><%= coin.percent_change_1h %></td>
+        <td><%= coin.percent_change_24h %></td>
+        <td><%= coin.market_cap %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
